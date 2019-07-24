@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-header">
+          Ajouter un produit
+        </div>
+        <div class="card-body">
+          <form name="form" #f="ngForm" (ngSubmit)="sendProduit()" novalidate>
+            <div class="form-group">
+              <label for="nomProduit">Désignation produit</label>
+              <input type="text" class="form-control" id="nomProduit" name="nomProduit" placeholder="nom du produit"
+                [(ngModel)]="produit.nomProduit">
+            </div>
+            <div class="form-group">
+              <label for="quantité">Quantité</label>
+              <input type="text" class="form-control" id="quantite" name="quantite" placeholder="auntité en nombre"
+                [(ngModel)]="produit.quantite">
+            </div>
+            <div class="form-group">
+              <label for="prix">Prix</label>
+              <input type="text" class="form-control" id="prix" name="prix" placeholder="prix en FCFA"
+                [(ngModel)]="produit.prix">
+            </div>
+            <div class="form-group">
+              <label style="font-weight: bold" for="normal-input" class="form-control-label require">Categorie</label>
+              <select class="form-control " style="font-size:9px;" id="categorie" (change)="getCategorie($event)">
+                <!-- <option value="0">{{adresseDeLaMission}}</option> -->
+                <option *ngFor="let cat of listeCategorie;let i=index" [value]="cat.idCategorie">
+                  {{cat.nomCategorie}} </option>
+              </select>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
